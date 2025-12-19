@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Kundli | Anil Kumar Seth</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Anil Kumar <span>Seth</span></h1>
+            <p class="subtitle">Vedic Astrologer & Astrology Consultant</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="astrology.html">Astrology</a>
+            <a href="kundli.html">Kundli</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Online Kundli (Birth Chart)</h2>
+        <p>
+            Generate your basic Kundli by entering birth details.
+            This provides general astrological insights. For complete
+            analysis, personal consultation is recommended.
+        </p>
+
+        <div class="kundli-box">
+            <h3>Enter Birth Details</h3>
+
+            <input type="date" id="dob" required>
+            <input type="time" id="tob" required>
+            <input type="text" id="place" placeholder="Place of Birth" required>
+
+            <button onclick="generateKundli()">Generate Kundli</button>
+
+            <div id="kundli-result" class="kundli-result"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© Anil Kumar Seth – All Rights Reserved</p>
+    </footer>
+
+    <script>
+        function generateKundli() {
+            const dob = document.getElementById("dob").value;
+            if (!dob) {
+                alert("Please enter Date of Birth");
+                return;
+            }
+
+            const date = new Date(dob);
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+
+            let zodiac = "";
+
+            if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) zodiac = "Aries";
+            else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) zodiac = "Taurus";
+            else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) zodiac = "Gemini";
+            else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) zodiac = "Cancer";
+            else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) zodiac = "Leo";
+            else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) zodiac = "Virgo";
+            else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) zodiac = "Libra";
+            else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) zodiac = "Scorpio";
+            else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) zodiac = "Sagittarius";
+            else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) zodiac = "Capricorn";
+            else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) zodiac = "Aquarius";
+            else zodiac = "Pisces";
+
+            document.getElementById("kundli-result").innerHTML = `
+        <h4>Your Basic Kundli Result</h4>
+        <p><strong>Zodiac Sign:</strong> ${zodiac}</p>
+        <p>
+            This is a basic calculation based on birth date.
+            For detailed planetary positions, dashas, and remedies,
+            please book a personal consultation.
+        </p>
+        <a href="contact.html" class="cta-btn">Consult Astrologer</a>
+    `;
+        }
+    </script>
+
+</body>
+
+</html>

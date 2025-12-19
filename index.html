@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Anil Kumar Seth | Vedic Astrologer</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Anil Kumar <span>Seth</span></h1>
+            <div class="logo-line"></div>
+            <p class="subtitle">Vedic Astrologer & Astrology Consultant</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="astrology.html">Astrology</a>
+            <a href="kundli.html">Kundli</a>
+            <a href="contact.html">Contact</a>
+
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero profile">
+        <img src="images/astro1.png" alt="Anil Kumar Seth - Vedic Astrologer">
+        <div class="intro-text">
+            <h2>Accurate Astrology Guidance for a Better Life</h2>
+            <p class="experience">
+                Vedic Astrologer & Astrology Consultant<br>
+                <strong>20+ Years of Professional Experience</strong>
+            </p>
+            <p class="intro-line">
+                Helping individuals make confident life decisions through
+                precise horoscope analysis and practical astrological guidance.
+            </p>
+        </div>
+    </section>
+
+    <!-- PERSONAL NOTE -->
+    <section>
+        <h2>A Personal Note</h2>
+        <p>
+            Astrology is not about fear or blind predictions—it is about clarity and direction.
+            My approach focuses on understanding planetary influences and offering
+            practical guidance that supports balanced and confident decision-making.
+        </p>
+    </section>
+
+    <!-- ZODIAC SIGNS -->
+    <section>
+        <h2>Zodiac Signs & Meanings</h2>
+
+        <div class="zodiac-grid">
+            <div onclick="showZodiac('Aries')">♈ Aries</div>
+            <div onclick="showZodiac('Taurus')">♉ Taurus</div>
+            <div onclick="showZodiac('Gemini')">♊ Gemini</div>
+            <div onclick="showZodiac('Cancer')">♋ Cancer</div>
+            <div onclick="showZodiac('Leo')">♌ Leo</div>
+            <div onclick="showZodiac('Virgo')">♍ Virgo</div>
+            <div onclick="showZodiac('Libra')">♎ Libra</div>
+            <div onclick="showZodiac('Scorpio')">♏ Scorpio</div>
+            <div onclick="showZodiac('Sagittarius')">♐ Sagittarius</div>
+            <div onclick="showZodiac('Capricorn')">♑ Capricorn</div>
+            <div onclick="showZodiac('Aquarius')">♒ Aquarius</div>
+            <div onclick="showZodiac('Pisces')">♓ Pisces</div>
+        </div>
+
+        <div id="zodiac-info" class="zodiac-info">
+            Click on a zodiac sign to see its meaning.
+        </div>
+    </section>
+
+    <!-- ZODIAC FINDER -->
+    <section>
+        <h2>Find Your Zodiac Sign</h2>
+
+        <div class="zodiac-finder">
+            <label for="dob">Enter Your Date of Birth</label><br><br>
+            <input type="date" id="dob">
+            <br><br>
+            <button onclick="findZodiac()">Find My Zodiac</button>
+
+            <div id="zodiac-result" class="zodiac-result"></div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <p style="text-align:center; margin-top:25px;">
+        <a href="contact.html" class="cta-btn">
+            Get Personalized Horoscope Consultation
+        </a>
+    </p>
+
+    <!-- DAILY GUIDANCE -->
+    <section>
+        <h2>Today’s Zodiac Guidance</h2>
+        <div class="daily-zodiac">
+            <p id="daily-message">Loading today’s guidance...</p>
+        </div>
+    </section>
+
+    <!-- TRUST (SHORT & CLEAN) -->
+    <section class="trust">
+        <h2>Why Clients Trust My Guidance</h2>
+        <ul>
+            <li>✔️ 20+ Years of Experience</li>
+            <li>✔️ Confidential & Ethical Consultations</li>
+            <li>✔️ Practical, Honest Astrology Guidance</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>© Anil Kumar Seth – Vedic Astrologer & Astrology Consultant</p>
+    </footer>
+
+    <!-- FLOATING BUTTONS -->
+    <a href="https://wa.me/9953840234" class="whatsapp-btn" target="_blank">
+        💬 Chat on WhatsApp
+    </a>
+
+    <a href="contact.html" class="book-btn">Book Consultation</a>
+
+    <!-- SCRIPTS -->
+    <script>
+        function showZodiac(sign) {
+            const info = {
+                Aries: "Fire | Mars | Courageous, energetic, confident.",
+                Taurus: "Earth | Venus | Reliable, patient, practical.",
+                Gemini: "Air | Mercury | Curious, communicative, adaptable.",
+                Cancer: "Water | Moon | Emotional, caring, intuitive.",
+                Leo: "Fire | Sun | Confident, generous, leader.",
+                Virgo: "Earth | Mercury | Analytical, helpful, practical.",
+                Libra: "Air | Venus | Balanced, diplomatic, fair.",
+                Scorpio: "Water | Mars | Intense, determined, focused.",
+                Sagittarius: "Fire | Jupiter | Optimistic, adventurous.",
+                Capricorn: "Earth | Saturn | Disciplined, ambitious.",
+                Aquarius: "Air | Saturn | Innovative, independent.",
+                Pisces: "Water | Jupiter | Compassionate, intuitive."
+            };
+            document.getElementById("zodiac-info").innerText = info[sign];
+        }
+    </script>
+
+    <script>
+        function findZodiac() {
+            const dob = document.getElementById("dob").value;
+            if (!dob) {
+                document.getElementById("zodiac-result").innerText =
+                    "Please select your date of birth.";
+                return;
+            }
+
+            const d = new Date(dob);
+            const day = d.getDate();
+            const month = d.getMonth() + 1;
+
+            let z = "";
+            if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) z = "♈ Aries";
+            else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) z = "♉ Taurus";
+            else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) z = "♊ Gemini";
+            else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) z = "♋ Cancer";
+            else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) z = "♌ Leo";
+            else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) z = "♍ Virgo";
+            else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) z = "♎ Libra";
+            else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) z = "♏ Scorpio";
+            else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) z = "♐ Sagittarius";
+            else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) z = "♑ Capricorn";
+            else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) z = "♒ Aquarius";
+            else z = "♓ Pisces";
+
+            document.getElementById("zodiac-result").innerText = "Your Zodiac Sign: " + z;
+        }
+    </script>
+
+    <script>
+        const dailyMessages = [
+            "Today favors thoughtful planning and calm decisions.",
+            "Patience will bring positive outcomes today.",
+            "Communication brings clarity—express yourself wisely.",
+            "Trust your intuition and stay emotionally balanced.",
+            "Confidence opens new opportunities today.",
+            "Small disciplined efforts bring long-term success."
+        ];
+
+        const today = new Date().getDate();
+        document.getElementById("daily-message").innerText =
+            dailyMessages[today % dailyMessages.length];
+    </script>
+
+</body>
+
+</html>
